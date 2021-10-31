@@ -19,21 +19,17 @@ const config = {
         serverID: "875551952820383774",
         walletChannelID: "875551952820383777",
         generalChannelID: "875575709446340688",
-        serverAdminID: "164007971599155200",
-        botId: "875055296857387018"
     },
     production: {
         serverID: "162978315068506112",
         walletChannelID: "874802775010213889",
         generalChannelID: "875801201420165140",
-        serverAdminID: "162655723426152448",
-        botId: "875055296857387018"
     },
     app: {
         // Announcements
-        announcement: "**ANNOUNCEMENTS:** Patch " + pjson.version + " is live! New Stuff: Jobs are live! Old Stuff: Music Bot, Blackjack.\n",
+        announcement: "**ANNOUNCEMENTS:** Patch " + pjson.version + " is live! New Stuff: Music bot fixes? Update to new API!\n",
         // Wallet options
-        coinName: "$DarCoin$",
+        coinName: "DarCoin",
         initialStartCash: 50,
         initialBankCash: 500,
         taxRate: 0.06,
@@ -44,7 +40,10 @@ const config = {
         penaltyAmount: 0.35,
         // Blackjack options
         minBet: 5,
-        maxBet: 30
+        maxBet: 30,
+        // Music options
+        playCost: 20,
+        skipCost: 10,
     }
 };
 
