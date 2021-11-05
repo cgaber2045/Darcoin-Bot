@@ -116,6 +116,6 @@ Edit the `config.js` and fill out the values:
 2. Clone your fork: `git clone https://github.com/your-username/Darcoin-Bot.git`
 3. Create your feature branch: `git checkout -b my-new-feature`
 4. Stage changes `git add .`
-5. Commit your changes: `cz` OR `npm run commit` do not use `git commit`
+5. Commit your changes: `git commit`
 6. Push to the branch: `git push origin my-new-feature`
 7. Submit a pull request
