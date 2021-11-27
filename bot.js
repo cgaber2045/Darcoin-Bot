@@ -26,6 +26,7 @@ global.config = require('./config');
 if (process.env.CONFIG == "production") global.defaultConfig = config.production;
 else global.defaultConfig = config.testing;
 global.appConfig = config.app;
+global.cookieString = process.env.COOKIE_STRING;
 
 // Message with all the data.
 global.databaseMessage = "";

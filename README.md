@@ -43,6 +43,12 @@ Edit the `config.js` and fill out the values:
 }
 ```
 
+Create a .env file and fill in values for:
+```
+BOT_TOKEN = # Set this to your bot token
+COOKIE_STRING = # Set this to the value of your __Secure-3PSID cookie from youtube.com. in the form __Secure-3PSID=value;
+```
+
 ## 📝 Features & Commands
 
 > Note: The default prefix is '!'
