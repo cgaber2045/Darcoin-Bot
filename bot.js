@@ -119,8 +119,8 @@ function refreshMessageArray() {
     }
     ).then( () => {
       jobs.createRoles();
-      wallet.taxSystem();
       jobs.dailyIncome();
+      wallet.taxSystem();
       wallet.wellfareSystem();
     });
 }
