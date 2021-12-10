@@ -27,12 +27,13 @@ const config = {
     },
     app: {
         // Announcements
-        announcement: "**ANNOUNCEMENTS:** Patch " + pjson.version + " is live! New Stuff: Music bot fixes, Update to new API, Can now kick people!\n",
+        announcement: "**ANNOUNCEMENTS:** Patch " + pjson.version + " is live! New Stuff: High roller table! Notification changes, increased taxes & wellfare.\n",
         // Wallet options
         coinName: "DarCoin",
         initialStartCash: 50,
         initialBankCash: 500,
-        taxRate: 0.06,
+        taxRate: 0.10,
+        wellfareRate: 10,
         // Betting options
         progressBarLength: 50,
         // Robbing options
