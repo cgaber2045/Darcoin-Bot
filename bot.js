@@ -42,30 +42,25 @@ bot.on("message", commandHandler);
 // Needed everytime the bot comes online to make sure all of our data is preserved.
 function initializeBot() {
   console.log(`Bot has started, with ${bot.users.cache.size} users, in ${bot.channels.cache.size} channels of ${bot.guilds.cache.size} guilds.`);
-  bot.user.setPresence({ activity: {name: appConfig.coinName + " to the Moon!", type:"PLAYING" } });
+  bot.user.setPresence({ activity: {name: appConfig.coinName + " to the Moon!", type:"COMPETING" } });
   global.defaultConfig.botId = bot.user.id;
 
   // update bot cache
-  bot.guilds.cache.get(defaultConfig.serverID).members.fetch()
+  bot.guilds.cache.get(defaultConfig.serverID).members.fetch();
 
-  var firstMessage = true;
   let channel = bot.channels.cache.get(defaultConfig.walletChannelID);
   channel.messages.fetch({ limit: 100 }).then(messages => {
     // Iterate through the messages and see if the bot already made a message. If not, we know this 
     // is the first run of the bot.
-    messages.forEach(message => {
-      if(message.author.id === defaultConfig.botId) {
-        firstMessage = false; 
-        databaseMessage = message.id;
-      } 
-    })
-  }).then(
-    () => {
-      // If this is the first run, we want to get the server admin's messages and store all of the data
-      // in a way the bot can understand it.
-      if (firstMessage === true) parseMessages();
-      else refreshMessageArray();
-    })
+    message = messages.find(message => message.author.id == defaultConfig.botId);
+
+    if (message) {
+      databaseMessage = message.id;
+      return refreshMessageArray();
+    }
+
+    return parseMessages();
+  })
 }
 
 // Get all of Server Admin's messages in the channel and store them in a way the bot can understand.
@@ -118,6 +113,7 @@ function refreshMessageArray() {
       }
     }
     ).then( () => {
+      // Stuff to do after the bot is initialized.
       jobs.createRoles();
       jobs.dailyIncome();
       wallet.taxSystem();
