@@ -39,6 +39,9 @@ bot.login(process.env.BOT_TOKEN);
 bot.once("ready", initializeBot);
 bot.on("message", commandHandler);
 
+let bankAccountText = "**__Wallets__ - Please DM me (the bot) !help to get the commands.**\n";
+    bankAccountText += appConfig.announcement;
+
 // Needed everytime the bot comes online to make sure all of our data is preserved.
 function initializeBot() {
   console.log(`Bot has started, with ${bot.users.cache.size} users, in ${bot.channels.cache.size} channels of ${bot.guilds.cache.size} guilds.`);
@@ -52,7 +55,7 @@ function initializeBot() {
   channel.messages.fetch({ limit: 100 }).then(messages => {
     // Iterate through the messages and see if the bot already made a message. If not, we know this 
     // is the first run of the bot.
-    message = messages.find(message => message.author.id == defaultConfig.botId);
+    message = messages.find(message => (message.author.id == defaultConfig.botId && message.content.length > bankAccountText.length));
 
     if (message) {
       databaseMessage = message.id;
@@ -80,9 +83,6 @@ function parseMessages() {
 
     // The bot starts with a finite amount of money and serves as the bank.
     wallet.setWallet(defaultConfig.botId, appConfig.initialBankCash);
-
-    let bankAccountText = "**__Wallets__ - Please DM me (the bot) !help to get the commands.**\n";
-    bankAccountText += appConfig.announcement;
     for(const [key,value] of wallet.wallet()) {
       bankAccountText += "<@" + key +">" + " - " + value + " - " + appConfig.coinName + "\n";
     }
