@@ -56,12 +56,12 @@ function initializeBot() {
     // Iterate through the messages and see if the bot already made a message. If not, we know this 
     // is the first run of the bot.
     message = messages.find(message => (message.author.id == defaultConfig.botId && message.content.length > bankAccountText.length));
-
+    // If this is not the bots first run
     if (message) {
       databaseMessage = message.id;
       return refreshMessageArray();
     }
-
+    // We see if we should import any wallets.
     return parseMessages();
   })
 }
@@ -74,11 +74,9 @@ function parseMessages() {
     messages.forEach(message => {if(message.member.hasPermission("ADMINISTRATOR")){
       var content = message.content;
       var splitMessage = content.split(" - ");
-
       var name = wallet.getIDFromNick(splitMessage[0]);
-      var amt = splitMessage[1];
-
-      if (name != 0) wallet.setWallet(name, parseInt(amt));
+      var amount = splitMessage[1];
+      if (name != 0) wallet.setWallet(name, parseInt(amount));
     } })
 
     // The bot starts with a finite amount of money and serves as the bank.
