@@ -19,7 +19,6 @@ var market = require('./lib/market');
 var blackjack = require('./lib/blackjack');
 var music = require('./lib/music');
 var jobs = require('./lib/jobs');
-var modules = ["wallet", "betting", "robbing", "market", "blackjack", "music", "jobs"];
 
 // All avaiable normal permission commands
 var commands = {
@@ -53,49 +52,31 @@ var adminCommands = {
 }
 
 // Setting up the command catcher.
-module.exports = async function commandHandler(message) {
+module.exports = async function commandHandler(interaction) {
     // Setting up the command catcher.
-    if(message.author.bot) return;
-    if(message.content.indexOf("!") !== 0) return;
+    if (!interaction.isCommand()) return;
 
     // Logging what users are using what commands.
-    console.log(message.author.username + ": " + message.content);
+    console.log(interaction.user.username + ": " + interaction.commandName);
 
-    // Getting the args as well as the command from the users message.
-    var args = message.content.slice(1).trim().match(/(?:[^\s"]+|"[^"]*")+/g);
-    const command = args.shift().toLowerCase();
+    console.log(interaction.options);
 
-    for (i = 0; i < args.length; i++) {
-      if (args[i].charAt(0) === '"' && args[i].charAt(args[i].length-1) === '"') {
-        args[i] = args[i].substr(1, args[i].length-2);
-      }
-    }
+    // Getting the args as well as the command from the user.
+    var args = interaction.options ? interaction.options : null;
 
     // Checking admin permissions
-    var isAdmin = (message.guild != null && (message.member.hasPermission("ADMINISTRATOR") || message.member.roles.cache.some(role => role.name === 'Bot Controller')));
-
-    // Help command
-    if (command == "help") {
-      if (args.length < 1 || !modules.includes(args[0])) {
-        var helpMessage = '**The bot has the following commands:** \
-        \n !about - Use this command to get information about the bot! \
-        \n For help with specific modules type the name after !help e.x. !help market \
-        \n Available modules: ';
-        modules.forEach(m => helpMessage += m + " ");
-        message.channel.send(helpMessage);
-      } else message.channel.send(eval(args[0]).help(isAdmin));
-      return;
-    }
+    var isAdmin = (interaction.guild != null && (interaction.member.permissions.has("ADMINISTRATOR") || interaction.member.roles.cache.some(role => role.name === 'Bot Controller')));
 
     // About the bot...
-    if (command == "about") {
-      message.reply("DarCoin Bot created by CEG for the Sanctuary Discord Server. Current Version: " + pjson.version);
+    if (interaction.commandName == "about") {
+      interaction.reply("DarCoin Bot created by CEG for the Sanctuary Discord Server. Current Version: " + pjson.version);
       return;
     }
 
     // Running the command the user input
-    if (isAdmin && adminCommands[command]) {
-      adminCommands[command](message, args);
+    if (isAdmin && adminCommands[interaction.commandName]) {
+      adminCommands[interaction.commandName](interaction, args);
       return;
-    } else if (commands[command]) commands[command](message, args);
+    } else if (commands[interaction.commandName]) commands[interaction.commandName](interaction, args);
+    else interaction.reply({ content: "You do not have access to that command!", ephemeral: true });
 }
