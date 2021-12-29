@@ -58,13 +58,13 @@ module.exports = async function commandHandler(interaction) {
     // Setting up the command catcher.
     if (!interaction.isCommand()) return;
 
-    // Logging what users are using what commands.
-    console.log(interaction.user.username + ": " + interaction.commandName);
-
-    console.log(interaction.options._hoistedOptions);
-
     // Getting the args as well as the command from the user.
     var args = interaction.options ? interaction.options : null;
+
+    // Logging what users are using what commands.
+    var command = interaction.user.username + ": " + interaction.commandName;
+    for (var x of args._hoistedOptions) command += ` ${x.name}:${x.name == "user" ? x.user.username : x.value}`;
+    console.log(command);
 
     // Checking admin permissions
     var isAdmin = (interaction.guild != null && (interaction.member.permissions.has("ADMINISTRATOR") || interaction.member.roles.cache.some(role => role.name === 'Bot Controller')));
