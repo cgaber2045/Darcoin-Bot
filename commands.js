@@ -19,13 +19,14 @@ var market = require('./lib/market');
 var blackjack = require('./lib/blackjack');
 var music = require('./lib/music');
 var jobs = require('./lib/jobs');
+var hacking = require('./lib/hacking');
 
 // All avaiable normal permission commands
 var commands = {
   balance: wallet.balance,
   join: wallet.create,
   pay: wallet.payUser,
-  rob: robbing.rob,
+  //rob: robbing.rob,
   buy: market.buy,
   getroles: market.getRoles,
   blackjack: blackjack.startGame,
@@ -37,7 +38,8 @@ var commands = {
   startbets: betting.startBetting,
   stopbets: betting.stopBetting,
   winner: betting.winner,
-  cancel: betting.cancelBets
+  cancel: betting.cancelBets,
+  hack: hacking.hack
 }
 
 // All avaiable admin permission commands
@@ -59,7 +61,7 @@ module.exports = async function commandHandler(interaction) {
     // Logging what users are using what commands.
     console.log(interaction.user.username + ": " + interaction.commandName);
 
-    console.log(interaction.options);
+    console.log(interaction.options._hoistedOptions);
 
     // Getting the args as well as the command from the user.
     var args = interaction.options ? interaction.options : null;

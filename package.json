@@ -15,6 +15,7 @@
     "discord.js": "^13.4.0",
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.4.0",
+    "generate-maze": "^1.1.0",
     "libsodium-wrappers": "^0.7.9",
     "string-progressbar": "^1.0.4",
     "yt-search": "^2.10.2",
