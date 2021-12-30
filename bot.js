@@ -107,7 +107,7 @@ function refreshMessageArray() {
       for (i = 2; i < messages.length; i++) {
         var splitMessage = messages[i].split(" - ");
         var id = splitMessage[0].replace(/[<>@]/g, '');
-        var amount = parseInt(splitMessage[1].replace(appConfig.coinName|" ", ''));
+        var amount = parseInt(splitMessage[1].replace(appConfig.coinName, ''));
         try {
           var itemlist = JSON.parse(splitMessage[2].replace('Items ', ''));
         } catch  {var itemlist = [];}
