@@ -1,6 +1,6 @@
 {
   "name": "darcoin-bot",
-  "version": "1.8.5",
+  "version": "2.0.0",
   "description": "DarCoin is an economy bot designed for the Sanctuary Discord server.",
   "main": "bot.js",
   "scripts": {
@@ -9,9 +9,14 @@
   "author": "Chris Gaber",
   "dependencies": {
     "@discordjs/opus": "^0.5.3",
-    "discord.js": "^12.5.3",
+    "@discordjs/rest": "^0.2.0-canary.0",
+    "@discordjs/voice": "^0.7.5",
+    "discord-api-types": "^0.25.2",
+    "discord.js": "^13.4.0",
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.4.0",
+    "generate-maze": "^1.1.0",
+    "libsodium-wrappers": "^0.7.9",
     "string-progressbar": "^1.0.4",
     "yt-search": "^2.10.2",
     "ytdl-core": "^4.9.2"

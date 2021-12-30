@@ -27,7 +27,7 @@ const config = {
     },
     app: {
         // Announcements
-        announcement: "**ANNOUNCEMENTS:** Patch " + pjson.version + " is live! New Stuff: High roller table! Notification changes, increased taxes & wellfare.\n",
+        announcement: "**ANNOUNCEMENTS:** Patch " + pjson.version + " is live! New Stuff: Slash commands, better blackjack, new robbing!\n",
         // Wallet options
         coinName: "DarCoin",
         initialStartCash: 50,
