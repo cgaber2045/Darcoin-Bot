@@ -26,6 +26,6 @@ commands.push(about);
 
 const rest = new REST({ version: '9' }).setToken(process.env.BOT_TOKEN);
 
-rest.put(Routes.applicationCommands('875055296857387018'), { body: commands })
+rest.put(Routes.applicationCommands('162978315068506112'), { body: commands })
 	.then(() => console.log('Successfully registered application commands.'))
 	.catch(console.error);
