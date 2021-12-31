@@ -17,7 +17,6 @@ const {Client, Intents} = require('discord.js');
 // Module inclusions
 const wallet = require('./lib/wallet');
 const jobs = require('./lib/jobs');
-const items = require('./lib/items');
 const commandHandler = require("./commands");
 
 // Importing and setting different configs for the bot
@@ -85,7 +84,7 @@ function parseMessages() {
     // The bot starts with a finite amount of money and serves as the bank.
     wallet.setWallet(defaultConfig.botId, appConfig.initialBankCash);
     for(const [key,value] of wallet.wallet()) {
-      bankAccountText += `<@${key}> - ${value} ${appConfig.coinName} - Items: ${items.formatItems(key)}\n`;
+      bankAccountText += `<@${key}> - ${value} ${appConfig.coinName} - Items: ${wallet.formatItems(key)}\n`;
     }
 
     channel.send(bankAccountText);
@@ -115,7 +114,7 @@ function refreshMessageArray() {
         if (amount == NaN) amount = 0;
         if (id != 0) { 
           wallet.setWallet(id, amount);
-          items.addItems(id, itemlist);
+          wallet.addItems(id, itemlist);
         }
       }
     }

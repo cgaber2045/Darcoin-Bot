@@ -26,6 +26,7 @@ var commands = {
   balance: wallet.balance,
   join: wallet.create,
   pay: wallet.payUser,
+  //items: wallet.items,
   rob: robbing.rob,
   buy: market.buy,
   getroles: market.getRoles,
@@ -39,7 +40,7 @@ var commands = {
   stopbets: betting.stopBetting,
   winner: betting.winner,
   cancel: betting.cancelBets,
-  hack: hacking.hack
+  hack: hacking.hack,
 }
 
 // All avaiable admin permission commands
