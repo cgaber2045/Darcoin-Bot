@@ -113,6 +113,7 @@ function refreshMessageArray() {
 
         if (amount == NaN) amount = 0;
         if (id != 0) { 
+          console.log(itemlist);
           wallet.setWallet(id, amount);
           wallet.addItems(id, itemlist);
         }
