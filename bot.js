@@ -122,8 +122,8 @@ function refreshMessageArray() {
   ).then( () => {
       // Stuff to do after the bot is initialized.
       jobs.createRoles();
-      jobs.dailyIncome();
       wallet.taxSystem();
       wallet.wellfareSystem();
+      jobs.dailyIncome();
   });
 }
