@@ -32,7 +32,7 @@ const config = {
         coinName: "DarCoin",
         initialStartCash: 50,
         initialBankCash: 500,
-        taxRate: 0.10,
+        taxRate: 0.15,
         wellfareRate: 10,
         // Betting options
         progressBarLength: 50,
