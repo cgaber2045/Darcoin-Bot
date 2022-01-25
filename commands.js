@@ -26,7 +26,7 @@ var commands = {
   balance: wallet.balance,
   join: wallet.create,
   pay: wallet.payUser,
-  //items: wallet.items,
+  items: wallet.items,
   rob: robbing.rob,
   buy: market.buy,
   getroles: market.getRoles,
