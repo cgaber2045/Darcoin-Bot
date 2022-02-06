@@ -108,12 +108,11 @@ function refreshMessageArray() {
         var id = splitMessage[0].replace(/[<>@]/g, '');
         var amount = parseInt(splitMessage[1].replace(appConfig.coinName, ''));
         try {
-          var itemlist = JSON.parse(splitMessage[2].replace('Items ', ''));
+          var itemlist = JSON.parse(splitMessage[2].substring(6));
         } catch  {var itemlist = [];}
 
-        if (amount == NaN) amount = 0;
-        if (id != 0) { 
-          console.log(itemlist);
+        if (Number.isNaN(amount)) amount = 0;
+        if (id != 0) {
           wallet.setWallet(id, amount);
           wallet.addItems(id, itemlist);
         }
