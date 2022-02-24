@@ -58,7 +58,7 @@ COOKIE_STRING = # Set this to the value of your __Secure-3PSID cookie from youtu
 
 `/pay CEG 10`
 
-![wallet](https://imgur.com/a/mMhDcBC)
+![wallet](https://i.imgur.com/WslIJQu_d.webp?maxwidth=760&fidelity=grand)
 
 ### 🎲 Betting
 
