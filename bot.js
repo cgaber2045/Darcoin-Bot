@@ -73,22 +73,23 @@ function parseMessages() {
   let channel = bot.channels.cache.get(defaultConfig.walletChannelID);
 
   channel.messages.fetch({ limit: 100 }).then(messages => {
-    messages.forEach(message => {if(message.member.permissions.has("ADMINISTRATOR")){
-      var content = message.content;
-      var splitMessage = content.split(" - ");
-      var name = wallet.getIDFromNick(splitMessage[0]);
-      var amount = splitMessage[1];
-      if (name != 0) wallet.setWallet(name, parseInt(amount));
-    } })
-
-    // The bot starts with a finite amount of money and serves as the bank.
-    wallet.setWallet(defaultConfig.botId, appConfig.initialBankCash);
-    for(const [key,value] of wallet.wallet()) {
-      bankAccountText += `<@${key}> - ${value} ${appConfig.coinName} - Items: ${wallet.formatItems(key)}\n`;
-    }
-
-    channel.send(bankAccountText);
+    messages.forEach(message => { 
+      if (message.member.permissions.has("ADMINISTRATOR")) {
+        var content = message.content;
+        var splitMessage = content.split(" - ");
+        var name = wallet.getIDFromNick(splitMessage[0]);
+        var amount = splitMessage[1];
+        
+        if (name != 0) wallet.setWallet(name, parseInt(amount));
+      } 
+    })
   });
+
+  // The bot starts with a finite amount of money and serves as the bank.
+  wallet.setWallet(defaultConfig.botId, appConfig.initialBankCash);
+  for(const [key,value] of wallet.wallet())
+    bankAccountText += `<@${key}> - ${value} ${appConfig.coinName} - Items: ${wallet.formatItems(key)}\n`;
+  channel.send(bankAccountText);
 }
 
 // Use the bots message to update our built in storage.
