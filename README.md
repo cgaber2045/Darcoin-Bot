@@ -77,10 +77,16 @@ COOKIE_STRING = # Set this to the value of your __Secure-3PSID cookie from youtu
 ### 🏪 Marketplace
 
 * Buy products in the market! 
-* Currently available products: deafen, undeafen, gag, ungag, taze, nick
+* Currently available products: deafen, undeafen, gag, ungag, taze, nick, timeout, kick
 
 `/buy gag CEG`
 `/buy nick CEG Chris`
+
+### 🔫 Hacking
+
+* Hack the bank for a specified amount.
+
+![hack](https://i.imgur.com/X4tzkm7.png)
 
 ### 🔫 Robbing
 
