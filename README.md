@@ -46,7 +46,7 @@ COOKIE_STRING = # Set this to the value of your __Secure-3PSID cookie from youtu
 
 ## 📝 Features & Commands
 
-> Note: The default prefix is '/'
+> Note: The default prefix is '/'. 
 > Commands are slash commands, tab auto completion and parameters are shown.
 
 ### 💰 Wallet
@@ -76,7 +76,8 @@ COOKIE_STRING = # Set this to the value of your __Secure-3PSID cookie from youtu
 
 ### 🏪 Marketplace
 
-* Buy products in the market/ Currently available products: deafen, undeafen, gag, ungag, taze, nick
+* Buy products in the market! 
+* Currently available products: deafen, undeafen, gag, ungag, taze, nick
 
 `/buy gag CEG`
 `/buy nick CEG Chris`
@@ -89,13 +90,13 @@ COOKIE_STRING = # Set this to the value of your __Secure-3PSID cookie from youtu
 
 ### 🃏 Blackjack
 
-* Play blackjack against the bot and win DarCoin/
+* Play blackjack against the bot and win DarCoin!
 
 `/blackjack 10`
 
 ### 💼 Jobs
 
-* Ask a server admin to apply for a job in the server/
+* Ask a server admin to apply for a job in the server!
 
 `/listjobs`
 
