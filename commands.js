@@ -59,11 +59,10 @@ module.exports = async function commandHandler(interaction) {
     // Setting up the command catcher.
     if (!interaction.isCommand()) return;
 
-    // Getting the args as well as the command from the user.
-    var args = interaction.options ? interaction.options : null;
-
     // Logging what users are using what commands.
     var command = interaction.user.username + ": " + interaction.commandName;
+    var args = interaction.options;
+    
     for (var x of args._hoistedOptions) command += ` ${x.name}:${x.name == "user" ? x.user.username : x.value}`;
     console.log(command);
 
