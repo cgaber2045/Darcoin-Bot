@@ -79,7 +79,8 @@ function parseMessages() {
         var splitMessage = content.split(" - ");
         var name = wallet.getIDFromNick(splitMessage[0]);
         var amount = splitMessage[1];
-        
+
+        if (amount == "Infinity" || amount == "-Infinity") amount = 0;
         if (name != 0) wallet.setWallet(name, parseInt(amount));
       } 
     })
