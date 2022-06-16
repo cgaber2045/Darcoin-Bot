@@ -35,11 +35,13 @@ var commands = {
   skip: music.skip,
   queue: music.listSongs,
   listjobs: jobs.listJobs,
+  /*____
   bet: betting.bet,
   startbets: betting.startBetting,
   stopbets: betting.stopBetting,
   winner: betting.winner,
   cancel: betting.cancelBets,
+  */
   hack: hacking.hack,
 }
 

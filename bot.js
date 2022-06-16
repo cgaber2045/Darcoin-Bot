@@ -79,7 +79,8 @@ function parseMessages() {
         var splitMessage = content.split(" - ");
         var name = wallet.getIDFromNick(splitMessage[0]);
         var amount = splitMessage[1];
-        
+
+        if (amount == "Infinity" || amount == "-Infinity") amount = 0;
         if (name != 0) wallet.setWallet(name, parseInt(amount));
       } 
     })
@@ -107,12 +108,16 @@ function refreshMessageArray() {
       for (i = 2; i < messages.length; i++) {
         var splitMessage = messages[i].split(" - ");
         var id = splitMessage[0].replace(/[<>@]/g, '');
+
+        if (splitMessage[1] == "Infinity" || splitMessage[1] == "-Infinity") splitMessage[1] = "0";
+        
         var amount = parseInt(splitMessage[1].replace(appConfig.coinName, ''));
         try {
           var itemlist = JSON.parse(splitMessage[2].substring(6));
         } catch  {var itemlist = [];}
 
         if (Number.isNaN(amount)) amount = 0;
+        
         if (id != 0) {
           wallet.setWallet(id, amount);
           wallet.addItems(id, itemlist);
